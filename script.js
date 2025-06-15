@@ -8,21 +8,26 @@ document.addEventListener('DOMContentLoaded', () =>{
         if(taskText === ""){
             alert('Enter a task');
             return;
-        }else{
+        } 
+
+        if(taskText !== ""){
             document.createElement('li').textContent = taskText;
-            const button = document.createElement('button');
-            button.textContent = 'Remove';
-            button.classList.add("remove-button");
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Remove';
+            removeBtn.classList.add("remove-btn");
+
+               removeBtn.onclick = function () {
+                li.remove();
+            };
+
+            li.appendChild(removeBtn);
+            document.getElementById("taskList").appendChild(li);
+
+             taskInput.value = '';
         }
 
-        button.addEventListener('click', () =>{
-            li.remove();
-        })
 
-        li.appendChild(removeButton);
-        document.getElementById("taskList").appendChild(li);
-
-        taskInput.value = '';
+       
         addButton.addEventListener("click", addTask);
 
         taskInput.addEventListener('keypress', function(event){
